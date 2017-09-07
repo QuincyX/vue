@@ -18,7 +18,14 @@ if (!fs.existsSync(path.join(__dirname, '..', basePath))) {
   fs.mkdirSync(path.join(__dirname, '..', basePath))
 }
 
+let routerListDom = ''
+
 pageTable.forEach((o, i) => {
+  if (i === 0) {
+    routerListDom += ('<li><router-link to="' + o + '">' + o + '</router-link></li>\r\n')
+  } else {
+    routerListDom += ('\t\t<li><router-link to="' + o + '">' + o + '</router-link></li>\r\n')
+  }
   let obj = o.split('/')
   obj.pop()
   if (obj.length === 1) {
@@ -29,7 +36,8 @@ pageTable.forEach((o, i) => {
     }
     createFromOrigin(o)
   }
-  if (i === pageTable.length - 1) {
-    console.log('create page success!')
-  }
 })
+
+let fileData = fs.readFileSync(originFile, 'utf-8').replace(/\{\{pageName\}\}/, routerListDom)
+fs.writeFileSync(basePath + '/dev.vue', fileData)
+console.log('create page success!')

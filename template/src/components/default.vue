@@ -1,6 +1,6 @@
 <template>
   <div>
-
+    {{pageName}}
   </div>
 </template>
 

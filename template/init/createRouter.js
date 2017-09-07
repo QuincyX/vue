@@ -29,18 +29,23 @@ async function findFile(p) {
   }
 }
 
+if (fs.existsSync(routerFile)) {
+  let bakFile = routerFile.replace(/index\.js/, 'index_bak.js')
+  fs.renameSync(routerFile, bakFile)
+}
+
 findFile(basePath).then(() => {
   let data = ''
   data += "import Vue from 'vue'\r\n"
   data += "import Router from 'vue-router'\r\n"
   data += "//import pages below\r\n"
   let routerList = []
-  vueFileList.forEach(o => {
+  vueFileList.forEach((o, i) => {
     data += "import " + o.name + " from '" + o.path + "'\r\n"
-    routerList.push("{path: '" + o.link + "',name: '" + o.name + "',component: " + o.name + "}")
+    routerList.push((i === 0 ? '' : ' ') + "{\r\n\t\tpath: '" + o.link + "',\r\n\t\tname: '" + o.name + "',\r\n\t\tcomponent: " + o.name + "\r\n\t}")
   })
-  data += "Vue.use(Router)\r\n"
-  data += "export default new Router({routes:[" + routerList + "]})\r\n"
+  data += "\nVue.use(Router)\r\n\n"
+  data += "export default new Router({\r\n\troutes: [" + routerList + "]\r\n})\r\n"
   fs.writeFile(routerFile, data, err => {
     if (err) {
       console.error(err);

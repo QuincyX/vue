@@ -10,7 +10,7 @@ let originFile = './src/components/default.vue'
 let pageTable = require('./pages')
 
 function createFromOrigin(fileName) {
-  let fileData = fs.readFileSync(originFile,'utf-8').replace(/\{\{pageName\}\}/,'this is '+fileName+' page')
+  let fileData = fs.readFileSync(originFile, 'utf-8').replace(/\{\{pageName\}\}/, 'this is ' + fileName + ' page')
   fs.writeFileSync(basePath + fileName + '.vue', fileData)
 }
 
@@ -18,7 +18,7 @@ if (!fs.existsSync(path.join(__dirname, '..', basePath))) {
   fs.mkdirSync(path.join(__dirname, '..', basePath))
 }
 
-pageTable.forEach((o,i) => {
+pageTable.forEach((o, i) => {
   let obj = o.split('/')
   obj.pop()
   if (obj.length === 1) {
@@ -29,7 +29,7 @@ pageTable.forEach((o,i) => {
     }
     createFromOrigin(o)
   }
-  if(i===pageTable.length-1){
+  if (i === pageTable.length - 1) {
     console.log('create page success!')
   }
 })

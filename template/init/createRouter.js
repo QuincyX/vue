@@ -1,5 +1,5 @@
 var fs = require('fs'),
-path = require('path');
+  path = require('path');
 
 //user config below
 //页面文件根目录
@@ -9,42 +9,43 @@ let routerFile = './src/router/index.js'
 
 let basePathAlias = path.join(__dirname, '..', basePath)
 let vueFileList = []
+
 async function findFile(p) {
-let files = await fs.readdirSync(p)
-for (let i = 0; i < files.length; i++) {
-  if (files[i].split('.').length == 1) {
-    await findFile(p + '/' + files[i])
-  } else if (files[i].split('.')[1] === 'vue') {
-    let n ={}
-    if(p ===basePath){
-      n.name=files[i].split('.')[0]
-    }else{
-      n.name=p.slice(basePath.length + 1).replace(/\//g, "_") + '_' + files[i].split('.')[0]
+  let files = await fs.readdirSync(p)
+  for (let i = 0; i < files.length; i++) {
+    if (files[i].split('.').length == 1) {
+      await findFile(p + '/' + files[i])
+    } else if (files[i].split('.')[1] === 'vue') {
+      let n = {}
+      if (p === basePath) {
+        n.name = files[i].split('.')[0]
+      } else {
+        n.name = p.slice(basePath.length + 1).replace(/\//g, "_") + '_' + files[i].split('.')[0]
+      }
+      n.link = p.slice(basePath.length) + '/' + files[i].split('.')[0]
+      n.path = "@/" + basePath.split('/').pop() + p.slice(basePath.length) + '/' + files[i].split('.')[0]
+      vueFileList.push(n)
     }
-    n.link=p.slice(basePath.length) + '/' + files[i].split('.')[0]
-    n.path="@/"+basePath.split('/').pop() + p.slice(basePath.length) + '/' + files[i].split('.')[0]
-    vueFileList.push(n)
-  } 
-}
+  }
 }
 
 findFile(basePath).then(() => {
-let data = ''
-data += "import Vue from 'vue'\r\n"
-data += "import Router from 'vue-router'\r\n"
-data += "//import pages below\r\n"
-let routerList = []
-vueFileList.forEach(o => {
-  data += "import " + o.name + " from '" + o.path + "'\r\n"
-  routerList.push("{path: '" + o.link + "',name: '" + o.name + "',component: " + o.name + "}")
-})
-data += "Vue.use(Router)\r\n"
-data += "export default new Router({routes:[" + routerList + "]})\r\n"
-fs.writeFile(routerFile, data, err => {
-  if (err) {
-    console.error(err);
-  } else {
-    console.log('vue-router file created success!');
-  }
-});
+  let data = ''
+  data += "import Vue from 'vue'\r\n"
+  data += "import Router from 'vue-router'\r\n"
+  data += "//import pages below\r\n"
+  let routerList = []
+  vueFileList.forEach(o => {
+    data += "import " + o.name + " from '" + o.path + "'\r\n"
+    routerList.push("{path: '" + o.link + "',name: '" + o.name + "',component: " + o.name + "}")
+  })
+  data += "Vue.use(Router)\r\n"
+  data += "export default new Router({routes:[" + routerList + "]})\r\n"
+  fs.writeFile(routerFile, data, err => {
+    if (err) {
+      console.error(err);
+    } else {
+      console.log('vue-router file created success!');
+    }
+  });
 })

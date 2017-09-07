@@ -1,21 +1,29 @@
 # vue
 
-> A Vue.js project
+> A Vue.js project build with Quincy's template
 
-## Build Setup
+## 使用方法
 
 ``` bash
-# install dependencies
-npm install
+# 依据./init/pages.js的信息自动生成vue目录结构
+npm run init-page
 
-# serve with hot reload at localhost:8080
+# 依据./src/page/目录自动生成路由表文件
+npm run init-router
+
+# 安装依赖
+npm i 
+cnpm i
+
+# 开发环境 localhost:8080
 npm run dev
 
-# build for production with minification
+# 打包
 npm run build
 
-# build for production and view the bundle analyzer report
-npm run build --report
 ```
+
+需要帮助请联系Quincy  
+wx：likequincy
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).

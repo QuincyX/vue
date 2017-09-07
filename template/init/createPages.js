@@ -7,7 +7,7 @@ let basePath = './src/pages'
 // 模板源文件
 let originFile = './src/components/default.vue'
 // 生成的目录结构
-let pagesTable = require('./pages')
+let pageTable = require('./pages')
 
 function createFromOrigin(fileName) {
   fs.writeFileSync(basePath + fileName + '.vue', fs.readFileSync(originFile))
@@ -17,7 +17,7 @@ if (!fs.existsSync(path.join(__dirname, '..', basePath))) {
   fs.mkdirSync(path.join(__dirname, '..', basePath))
 }
 
-pagesTable.forEach(o => {
+pageTable.forEach((o,i) => {
   let obj = o.split('/')
   obj.pop()
   if (obj.length === 1) {
@@ -27,5 +27,8 @@ pagesTable.forEach(o => {
       fs.mkdirSync(path.join(__dirname, '..', basePath, obj.join('/')))
     }
     createFromOrigin(o)
+  }
+  if(i===pageTable.length-1){
+    console.log('create page success!')
   }
 })

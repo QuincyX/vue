@@ -42,15 +42,19 @@ findFile(basePath).then(() => {
   let routerList = []
   vueFileList.forEach((o, i) => {
     data += "import " + o.name + " from '" + o.path + "'\r\n"
-    routerList.push((i === 0 ? '' : ' ') + "{\r\n\t\tpath: '" + o.link + "',\r\n\t\tname: '" + o.name + "',\r\n\t\tcomponent: " + o.name + "\r\n\t}")
+    if(o.name==='dev'){
+      routerList.push((i === 0 ? '' : ' ') + "{\r\n\t\tpath: '/',\r\n\t\tname: '" + o.name + "',\r\n\t\tcomponent: " + o.name + "\r\n\t}")
+    }else{
+      routerList.push((i === 0 ? '' : ' ') + "{\r\n\t\tpath: '" + o.link + "',\r\n\t\tname: '" + o.name + "',\r\n\t\tcomponent: " + o.name + "\r\n\t}")
+    }
   })
   data += "\nVue.use(Router)\r\n\n"
   data += "export default new Router({\r\n\troutes: [" + routerList + "]\r\n})\r\n"
   fs.writeFile(routerFile, data, err => {
     if (err) {
-      console.error(err);
+      console.error(err)
     } else {
-      console.log('vue-router file created success!');
+      console.log('vue-router file created success!')
     }
-  });
+  })
 })

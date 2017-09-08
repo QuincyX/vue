@@ -1,5 +1,5 @@
 export default {
-  actionDemo({ state,getters,commit,dispatch }, payload) {
-
+  actionDemo({ state,getters,commit }, payload) {
+    console.log(state)
   },
 }

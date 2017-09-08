@@ -1,5 +1,8 @@
 export default {
-  gettersDemo({ state }) {
-    return state.msg
+  UA() {
+    return navigator.userAgent
+  },
+  cookie() {
+    return document.cookie
   },
 }

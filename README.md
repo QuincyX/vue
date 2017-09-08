@@ -17,10 +17,19 @@ module.exports = [
 ]
 ```
 
-`init-page`方法会自动生成一个包含所有页面链接的`dev.vue`文件
+`init-page`方法会自动生成一个包含所有页面链接的`dev.vue`文件，方便开发环境使用
+
+如果已经存在`/router/index.js`路由表文件，`init-router`方法会把旧文件备份为`index_bak.js`文件
+
 
 ### 使用方法
 ``` bash
+# 依模板生成新项目
+vue init quincyx/vue myProject
+
+# 进入项目目录
+cd myProject
+
 # 依据./init/pages.js的信息自动生成vue目录结构
 npm run init-page
 

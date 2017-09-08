@@ -25,10 +25,10 @@ module.exports = [
 ### 使用方法
 ``` bash
 # 依模板生成新项目
-vue init quincyx/vue myProject
+vue init quincyx/vue my-project
 
 # 进入项目目录
-cd myProject
+cd my-project
 
 # 依据./init/pages.js的信息自动生成vue目录结构
 npm run init-page

@@ -10,7 +10,7 @@ let pageTable = require('./pages')
 let routerListDom = ''
 
 function createFromOrigin(fileName) {
-  let fileData = fs.readFileSync(originFile, 'utf-8').replace(/\{\{pageName\}\}/, 'this is ' + fileName + ' page')
+  let fileData = fs.readFileSync(originFile, 'utf-8').replace(/#pageName/, 'this is ' + fileName + ' page')
   fs.writeFileSync(basePath + fileName + '.vue', fileData)
 }
 
@@ -36,7 +36,7 @@ pageTable.forEach((o, i) => {
   }
 })
 
-let fileData = fs.readFileSync(originFile, 'utf-8').replace(/\{\{pageName\}\}/, routerListDom)
+let fileData = fs.readFileSync(originFile, 'utf-8').replace(/#pageName/, routerListDom)
 fs.writeFileSync(basePath + '/dev.vue', fileData)
 
 console.log('create page success!')

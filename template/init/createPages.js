@@ -19,20 +19,22 @@ if (!fs.existsSync(path.join(__dirname, '..', basePath))) {
 }
 
 pageTable.forEach((o, i) => {
-  if (i === 0) {
-    routerListDom += ('<li><router-link to="' + o + '">' + o + '</router-link></li>\r\n')
-  } else {
-    routerListDom += ('\t\t<li><router-link to="' + o + '">' + o + '</router-link></li>\r\n')
-  }
-  let obj = o.split('/')
-  obj.pop()
-  if (obj.length === 1) {
-    createFromOrigin(o)
-  } else {
-    if (!fs.existsSync(path.join(__dirname, '..', basePath, obj.join('/')))) {
-      fs.mkdirSync(path.join(__dirname, '..', basePath, obj.join('/')))
+  if (o !== '') {
+    if (i === 0) {
+      routerListDom += ('<li><router-link to="' + o + '">' + o + '</router-link></li>\r\n')
+    } else {
+      routerListDom += ('\t\t<li><router-link to="' + o + '">' + o + '</router-link></li>\r\n')
     }
-    createFromOrigin(o)
+    let obj = o.split('/')
+    obj.pop()
+    if (obj.length === 1) {
+      createFromOrigin(o)
+    } else {
+      if (!fs.existsSync(path.join(__dirname, '..', basePath, obj.join('/')))) {
+        fs.mkdirSync(path.join(__dirname, '..', basePath, obj.join('/')))
+      }
+      createFromOrigin(o)
+    }
   }
 })
 

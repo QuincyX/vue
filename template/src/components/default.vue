@@ -7,22 +7,25 @@
 <script>
 export default {
   name: 'app',
-  components:{},
-  data (){
-    return{
-      
+  components: {},
+  data() {
+    return {
+
     }
   },
-  computed:{
+  computed: {
 
   },
-  methods:{
+  filters: {
 
   },
-  created(){
+  methods: {
 
   },
-  mounted(){
+  created() {
+
+  },
+  mounted() {
 
   },
 }

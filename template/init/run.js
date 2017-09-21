@@ -134,7 +134,7 @@ async function findFile(p) {
 }
 
 function createApiModule(fileName) {
-  fs.writeFileSync('./src/api/' + fileName + '.js', fs.readFileSync('./src/api/module.js', 'utf-8').replace(/test/,fileName))
+  fs.writeFileSync('./src/api/' + fileName + '.js', fs.readFileSync('./src/api/module.js', 'utf-8').replace(/test/g,fileName))
 }
 
 function createStoreModule(fileName) {

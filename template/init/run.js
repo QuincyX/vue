@@ -91,9 +91,11 @@ pageTable.forEach(o => {
 let apiFileAppend = '// 引入API模块\r\n'
 let apiFileAppend2 = 'Object.assign(moduleAPI'
 userModules.forEach(o => {
-  createApiModule(o)
-  apiFileAppend += `import * as ${o}API from './${o}'\r\n`
-  apiFileAppend2 += `, ${o}API`
+  if (!fs.existsSync(`./src/api/${o}.js`)) {
+    createApiModule(o)
+    apiFileAppend += `import * as ${o}API from './${o}'\r\n`
+    apiFileAppend2 += `, ${o}API`
+  }
 })
 fs.writeFileSync('./src/api/index.js', fs.readFileSync('./src/api/index.js', 'utf-8').replace(/\/\/ 引入API模块/, apiFileAppend).replace(/Object\.assign\(moduleAPI/, apiFileAppend2))
 console.log('api modules created success!')
@@ -102,9 +104,11 @@ console.log('api modules created success!')
 let storeFileAppend = '// 引入vuex模块\r\n'
 let storeFileAppend2 = 'modules: {\r\n'
 userModules.forEach(o => {
-  createStoreModule(o)
-  storeFileAppend += `import ${o}Module from './modules/${o}'\r\n`
-  storeFileAppend2 += `\t\t${o}Module,\r\n`
+  if (!fs.existsSync(`./src/store/modules/${o}.js`)) {
+    createStoreModule(o)
+    storeFileAppend += `import ${o}Module from './modules/${o}'\r\n`
+    storeFileAppend2 += `\t\t${o}Module,\r\n`
+  }
 })
 fs.writeFileSync('./src/store/index.js', fs.readFileSync('./src/store/index.js', 'utf-8').replace(/\/\/ 引入vuex模块/, storeFileAppend).replace(/modules: \{/, storeFileAppend2))
 console.log('vuex modules created success!')
@@ -134,7 +138,7 @@ async function findFile(p) {
 }
 
 function createApiModule(fileName) {
-  fs.writeFileSync('./src/api/' + fileName + '.js', fs.readFileSync('./src/api/module.js', 'utf-8').replace(/test/g,fileName))
+  fs.writeFileSync('./src/api/' + fileName + '.js', fs.readFileSync('./src/api/module.js', 'utf-8').replace(/test/g, fileName))
 }
 
 function createStoreModule(fileName) {

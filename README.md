@@ -8,16 +8,18 @@
 
 ### 使用方法
 ``` bash
-# 依模板生成新项目
-vue init quincyx/vue my-project
-
 # 如果还没有安装vue-cli，请先安装
 npm i -g vue-cli
+
+# 生成新项目
+vue init quincyx/vue my-project
 ```
 
-## 项目初始化方法
+## 一键初始化项目方法
 
-先在`./init/pages.js`里定义好目录结构，内容是一个值为字符串的数组，以 `/` 开头表示页面根目录，文件后边不需要加`.vue`扩展名  
+请先在`./init/pages.js`里定义好目录结构，内容是一个值为字符串的数组，以 `/` 开头表示页面根目录，文件后边不需要加`.vue`扩展名   
+如果是二级目录会自动识别成为一个模块，并添加到vuex中 
+
 示例：
 ```
 module.exports = [
@@ -30,13 +32,11 @@ module.exports = [
 ]
 ```
 
-然后一键生成
+一键生成
 ```
 npm run init
 ```
 
 
-
-需要帮助请联系Quincy  
 wx：likequincy
 

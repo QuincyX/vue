@@ -4,7 +4,7 @@ import actions from './actions'
 import getters from './getters'
 import mutations from './mutations'
 
-// 引入vuex的模块
+// 引入vuex模块
 import moduleDemo from './modules/module'
 
 Vue.use(Vuex)

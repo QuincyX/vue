@@ -2,6 +2,10 @@
 
 > A Vue.js project template by Quincy 
 
+该模板包含vuex、vue-router、axios，使用less，内置less全局变量方法
+
+可一键生成项目结构的Vue工程模板，包括vue组件页面、vue-router路由表、api模块、vuex模块
+
 ### 使用方法
 ``` bash
 # 依模板生成新项目
@@ -26,16 +30,10 @@ module.exports = [
 ]
 ```
 
-`init-page`方法会自动生成一个包含所有页面链接的`dev.vue`文件，方便开发环境使用
+然后一键生成
 ```
-npm run init-page
+npm run init
 ```
-
-如果已经存在`/router/index.js`路由表文件，`init-router`方法会把旧文件备份为`index_bak.js`文件
-```
-npm run init-router
-```
-
 
 
 

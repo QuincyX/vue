@@ -2,14 +2,12 @@
 
 > A Vue.js project build with Quincy's template
 
+
 ## 使用方法
 
 ``` bash
-# 依据./init/pages.js的信息自动生成vue目录结构
-npm run init-page
-
-# 依据./src/page/目录自动生成路由表文件
-npm run init-router
+# 依据./init/pages.js的信息自动生成项目结构
+npm run init
 
 # 安装依赖
 npm i 
@@ -23,8 +21,4 @@ npm run build
 
 ```
 
-需要帮助请联系Quincy  
 wx：likequincy
-
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).

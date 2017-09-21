@@ -93,19 +93,21 @@ let apiFileAppend2 = 'Object.assign(moduleAPI'
 userModules.forEach(o => {
   createApiModule(o)
   apiFileAppend += `import * as ${o}API from './${o}'\r\n`
-  apiFileAppend2 += `, ${o}`
+  apiFileAppend2 += `, ${o}API`
 })
 fs.writeFileSync('./src/api/index.js', fs.readFileSync('./src/api/index.js', 'utf-8').replace(/\/\/ 引入API模块/, apiFileAppend).replace(/Object\.assign\(moduleAPI/, apiFileAppend2))
+console.log('api modules created success!')
 
 // 生成vuex模块
 let storeFileAppend = '// 引入vuex模块\r\n'
-let storeFileAppend2 = '\tmodules: {\r\n'
+let storeFileAppend2 = 'modules: {\r\n'
 userModules.forEach(o => {
   createStoreModule(o)
   storeFileAppend += `import ${o}Module from './modules/${o}'\r\n`
-  storeFileAppend2 += `\t\t${o}'\r\n`
+  storeFileAppend2 += `\t\t${o}Module,\r\n`
 })
 fs.writeFileSync('./src/store/index.js', fs.readFileSync('./src/store/index.js', 'utf-8').replace(/\/\/ 引入vuex模块/, storeFileAppend).replace(/modules: \{/, storeFileAppend2))
+console.log('vuex modules created success!')
 
 // 功能定义
 function createFromOrigin(fileName) {

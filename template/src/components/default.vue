@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- 模板识别字符 -->
     #pageName
   </div>
 </template>
@@ -14,9 +15,6 @@ export default {
     }
   },
   computed: {
-
-  },
-  filters: {
 
   },
   methods: {

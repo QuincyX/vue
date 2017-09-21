@@ -4,18 +4,17 @@ import actions from './actions'
 import getters from './getters'
 import mutations from './mutations'
 
-// import vuex modules
-import modulesDemo from './modules/demo'
+// 引入vuex的模块
+import moduleDemo from './modules/module'
 
-Vue.use(Vuex);
+Vue.use(Vuex)
 
-const state = {
-
-};
+// 全局状态
+const state = {}
 
 export default new Vuex.Store({
   modules: {
-    modulesDemo
+    moduleDemo
   },
   actions,
   getters,

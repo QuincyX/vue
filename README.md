@@ -2,7 +2,7 @@
 
 > A Vue.js project template by Quincy 
 
-该模板包含vuex、vue-router、axios，使用less，内置less全局变量方法
+该模板包含vuex、vue-router、axios，使用less，内置less全局变量方法、全局filters
 
 可一键生成项目结构的Vue工程模板，包括vue组件页面、vue-router路由表、api模块、vuex模块
 

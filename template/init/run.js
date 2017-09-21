@@ -89,19 +89,23 @@ pageTable.forEach(o => {
 
 // 生成api模块
 let apiFileAppend = '// 引入API模块\r\n'
+let apiFileAppend2 = 'Object.assign(moduleAPI'
 userModules.forEach(o => {
   createApiModule(o)
   apiFileAppend += `import * as ${o}API from './${o}'\r\n`
+  apiFileAppend2 += `, ${o}`
 })
-fs.writeFileSync('./src/api/index.js', fs.readFileSync('./src/api/index.js', 'utf-8').replace(/\/\/ 引入API模块/, apiFileAppend))
+fs.writeFileSync('./src/api/index.js', fs.readFileSync('./src/api/index.js', 'utf-8').replace(/\/\/ 引入API模块/, apiFileAppend).replace(/Object\.assign\(moduleAPI/, apiFileAppend2))
 
 // 生成vuex模块
 let storeFileAppend = '// 引入vuex模块\r\n'
+let storeFileAppend2 = '\tmodules: {\r\n'
 userModules.forEach(o => {
   createStoreModule(o)
   storeFileAppend += `import ${o}Module from './modules/${o}'\r\n`
+  storeFileAppend2 += `\t\t${o}'\r\n`
 })
-fs.writeFileSync('./src/store/index.js', fs.readFileSync('./src/store/index.js', 'utf-8').replace(/\/\/ 引入vuex模块/, storeFileAppend))
+fs.writeFileSync('./src/store/index.js', fs.readFileSync('./src/store/index.js', 'utf-8').replace(/\/\/ 引入vuex模块/, storeFileAppend).replace(/modules: \{/, storeFileAppend2))
 
 // 功能定义
 function createFromOrigin(fileName) {

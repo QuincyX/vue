@@ -8,7 +8,7 @@
 
         </div>
         <div class="row">
-          {{data | parseData}}
+          {{data }}
         </div>
       </div>
       <div class="form">

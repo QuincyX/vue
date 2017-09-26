@@ -2,6 +2,7 @@ import axios from 'axios'
 
 // 引入API模块
 import * as moduleAPI from './module'
+import * as initAPI from './init'
 
 // 跨域请求携带cookie
 axios.defaults.withCredentials = true
@@ -22,12 +23,12 @@ axios.interceptors.request.use(config => {
 // response拦截器
 axios.interceptors.response.use(
   response => {
-    if (response.data.errno !== 0) {
+    if (response.data.errno && response.data.errno !== 0) {
       console.log('%c>>>%c>>>%c>>>%c>>>%c>>>%c>>>%c>>>', 'color: #e74c3c', 'color: #e67e22', 'color: #f1c40f', 'color: #2ecc71', 'color: #1abc9c', 'color: #3498db', 'color: #9b59b6')
       console.log('出错了哦，' + response.data.errmsg)
       return Promise.reject(response.data)
     } else {
-      return response
+      return Promise.resolve(response.data)
     }
   },
   error => {
@@ -38,4 +39,4 @@ axios.interceptors.response.use(
 )
 
 // 导出各模块合并后的对象
-export default Object.assign(moduleAPI)
+export default Object.assign(initAPI, moduleAPI)

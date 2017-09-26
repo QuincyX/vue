@@ -32,6 +32,12 @@ var hotMiddleware = require('webpack-hot-middleware')(compiler, {
   log: false,
   heartbeat: 2000
 })
+
+var bodyParser = require('body-parser')
+var initRouter = require('../init/index.js')
+app.use('/init', bodyParser.json())
+app.use('/init', initRouter)
+
 // force page reload when html-webpack-plugin template changes
 compiler.plugin('compilation', function (compilation) {
   compilation.plugin('html-webpack-plugin-after-emit', function (data, cb) {

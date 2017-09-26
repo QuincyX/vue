@@ -60,7 +60,7 @@ export default {
   },
   methods: {
     init() {
-      this.$API.init('/init', {}).then(res => {
+      this.$API.init(this.data.pages).then(res => {
         console.log(res)
       })
     }

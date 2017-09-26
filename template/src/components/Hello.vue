@@ -8,7 +8,7 @@
 
         </div>
         <div class="row">
-          {{data | JSON.stringify(data)}}
+          {{data | parseData}}
         </div>
       </div>
       <div class="form">
@@ -51,6 +51,11 @@ export default {
         ],
         msg: '123456'
       }
+    }
+  },
+  filters: {
+    parseData(val) {
+      return JSON.stringify(val)
     }
   },
   methods: {

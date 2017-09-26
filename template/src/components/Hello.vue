@@ -8,7 +8,7 @@
 
         </div>
         <div class="row">
-          {{JSON.stringify(data)}}
+          {{data | JSON.stringify(data)}}
         </div>
       </div>
       <div class="form">

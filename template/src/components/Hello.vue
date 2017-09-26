@@ -8,7 +8,7 @@
 
         </div>
         <div class="row">
-          {{data }}
+
         </div>
       </div>
       <div class="form">
@@ -30,7 +30,7 @@
           </div>
         </div>
         <div class="toolBar">
-          <button class="small" @click="data.pages.push({module:'/module'+(data.pages.length+1),pages:[{name:'page1'}]})">添加 模块 / 分类</button>
+          <button class="small success" @click="data.pages.push({module:'module'+(data.pages.length+1),pages:[{name:'page1'}]})">添加 模块 / 分类</button>
         </div>
       </div>
     </div>
@@ -90,14 +90,11 @@ input {
 
 .item {
   line-height: 40px;
-  .label {
-    .inline;
-    width: 80px;
-    text-align: right;
-    padding-right: 10px;
-  }
   .module {
     .line(@dark);
+    input {
+      .border(@dark);
+    }
     margin-left: 35px;
   }
   .btn {
@@ -109,10 +106,14 @@ input {
 .subItem {
   .line(@warn);
   margin-left: 60px;
+  input {
+    .border(@warn);
+  }
 }
 
 .toolBar {
   padding: 10px 30px;
+  
 }
 
 .content {

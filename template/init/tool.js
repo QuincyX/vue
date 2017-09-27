@@ -101,7 +101,7 @@ initRouter: para => {
 },
 initApi: para => {
   let apiFileAppend = '// 引入API模块\r\n'
-  let apiFileAppend2 = 'Object.assign(moduleAPI'
+  let apiFileAppend2 = 'Object.assign(initAPI'
   para.forEach(o => {
     if (!fs.existsSync(`./src/api/${o}.js`)) {
       createApiModule(o)
@@ -109,7 +109,7 @@ initApi: para => {
       apiFileAppend2 += `, ${o}API`
     }
   })
-  fs.writeFileSync('./src/api/index.js', fs.readFileSync('./src/api/index.js', 'utf-8').replace(/\/\/ 引入API模块/, apiFileAppend).replace(/Object\.assign\(moduleAPI/, apiFileAppend2))
+  fs.writeFileSync('./src/api/index.js', fs.readFileSync('./src/api/index.js', 'utf-8').replace(/\/\/ 引入API模块/, apiFileAppend).replace(/Object\.assign\(initAPI/, apiFileAppend2))
 },
 initVuex: para => {
   let storeFileAppend = '// 引入vuex模块\r\n'

@@ -53,7 +53,7 @@ export default {
     return {
       data: {
         pages: [
-          { module: '/', pages: [{ name: 'navFrame' },{ name: 'main' },{ name: 'login' }] }
+          { module: '/', pages: [{ name: 'main' },{ name: 'navFrame' },{ name: 'login' }] }
         ],
         vuex: true,
         api: true,

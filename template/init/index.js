@@ -16,9 +16,9 @@ router.post('/', (req, res) => {
     if (req.body.vuex) {
       initTool.initVuex(thisModules)
     }
-    if (req.body.router) {
-      initTool.initRouter()
-    }
+  }
+  if (req.body.router) {
+    initTool.initRouter()
   }
   res.send('init pages success')
 })

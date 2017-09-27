@@ -4,11 +4,20 @@
     <h3>你的开发环境已经准备就绪，来试试一键初始化工具吧！</h3>
     <div class="content">
       <div class="info">
-        <div class="row">
-
+        <div class="item">
+          <input type="checkbox" v-model="data.vuex">添加 Vuex 模块
+        </div>
+        <div class="item">
+          <input type="checkbox" v-model="data.api">添加 Api 模块
+        </div>
+        <div class="item">
+          <input type="checkbox" v-model="data.router">生成 Vue-router 路由表
+        </div>
+        <div class="item">
+          <input type="checkbox" v-model="data.pug">使用 pug 引擎
         </div>
         <div class="row">
-
+          {{msg}}
         </div>
       </div>
       <div class="form">
@@ -47,10 +56,14 @@ export default {
     return {
       data: {
         pages: [
-          { module: '/', pages: [{ name: 'dev' }] }
+          { module: '/', pages: [{ name: 'navFrame' },{ name: 'main' },{ name: 'login' }] }
         ],
-        msg: '123456'
-      }
+        vuex: true,
+        api: true,
+        router: true,
+        pug: false,
+      },
+      msg: ''
     }
   },
   filters: {
@@ -61,7 +74,7 @@ export default {
   methods: {
     init() {
       this.$API.init(this.data.pages).then(res => {
-        console.log(res)
+        this.msg = res || 'success!'
       })
     }
   }
@@ -74,17 +87,34 @@ input {
   padding: .2em .5em;
 }
 
+input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin: 0 5px;
+  vertical-align: middle;
+}
+
 .line(@color) {
   position: relative;
   &:before {
     content: "";
     height: 1px;
-    width: 100px;
+    width: 40px;
     display: block;
     position: absolute;
     margin-top: 20px;
     right: 100%;
     background: @color;
+  }
+  &:after {
+    content: "";
+    height: 39px;
+    width: 1px;
+    display: block;
+    position: absolute;
+    background: @color;
+    left: -40px;
+    top:-19px;
   }
 }
 
@@ -113,7 +143,6 @@ input {
 
 .toolBar {
   padding: 10px 30px;
-  
 }
 
 .content {
@@ -123,17 +152,24 @@ input {
     .inline;
     .border(@border);
     vertical-align: top;
+    text-align: left;
+    margin: 0 10px;
   }
   .form {
     .child;
-    width: 500px;
-    text-align: left;
+    width: 300px;
     overflow: hidden;
   }
   .info {
     .child;
-    width: 350px;
+    width: 250px;
     padding: 1em;
+    .row{
+      color:@sub;
+      font-size: 12px;
+      margin-top:2em;
+      text-align: center;
+    }
   }
 }
 </style>

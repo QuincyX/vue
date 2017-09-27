@@ -47,5 +47,35 @@ module.exports = {
         })
       }
     })
+  },
+  initRouter: para => {
+    if (fs.existsSync(routerFile)) {
+      let bakFile = routerFile.replace(/index\.js/, 'index_bak.js')
+      fs.renameSync(routerFile, bakFile)
+    }
+  },
+  initApi: para => {
+    let apiFileAppend = '// 引入API模块\r\n'
+    let apiFileAppend2 = 'Object.assign(moduleAPI'
+    para.forEach(o => {
+      if (!fs.existsSync(`./src/api/${o}.js`)) {
+        createApiModule(o)
+        apiFileAppend += `import * as ${o}API from './${o}'\r\n`
+        apiFileAppend2 += `, ${o}API`
+      }
+    })
+    fs.writeFileSync('./src/api/index.js', fs.readFileSync('./src/api/index.js', 'utf-8').replace(/\/\/ 引入API模块/, apiFileAppend).replace(/Object\.assign\(moduleAPI/, apiFileAppend2))
+  },
+  initVuex: para => {
+    let storeFileAppend = '// 引入vuex模块\r\n'
+    let storeFileAppend2 = 'modules: {\r\n'
+    para.forEach(o => {
+      if (!fs.existsSync(`./src/store/modules/${o}.js`)) {
+        createStoreModule(o)
+        storeFileAppend += `import ${o}Module from './modules/${o}'\r\n`
+        storeFileAppend2 += `\t\t${o}Module,\r\n`
+      }
+    })
+    fs.writeFileSync('./src/store/index.js', fs.readFileSync('./src/store/index.js', 'utf-8').replace(/\/\/ 引入vuex模块/, storeFileAppend).replace(/modules: \{/, storeFileAppend2))
   }
 }

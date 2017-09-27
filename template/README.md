@@ -6,9 +6,6 @@
 ## 使用方法
 
 ``` bash
-# 依据./init/pages.js的信息自动生成项目结构
-npm run init
-
 # 安装依赖
 npm i 
 cnpm i

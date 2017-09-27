@@ -82,7 +82,7 @@ initRouter: para => {
     let routerList = []
     vueFileList.forEach((o, i) => {
       data += "import " + o.name + " from '" + o.path + "'\r\n"
-      if (o.name === 'dev') {
+      if (o.name === 'main') {
         routerList.push((i === 0 ? '' : ' ') + "{\r\n\t\tpath: '/',\r\n\t\tname: '" + o.name + "',\r\n\t\tcomponent: " + o.name + "\r\n\t}")
       } else {
         routerList.push((i === 0 ? '' : ' ') + "{\r\n\t\tpath: '" + o.link + "',\r\n\t\tname: '" + o.name + "',\r\n\t\tcomponent: " + o.name + "\r\n\t}")

@@ -13,9 +13,6 @@
         <div class="item">
           <input type="checkbox" v-model="data.router">生成 Vue-router 路由表
         </div>
-        <div class="item">
-          <input type="checkbox" v-model="data.pug">使用 pug 引擎
-        </div>
         <div class="row">
           {{msg}}
         </div>
@@ -61,7 +58,6 @@ export default {
         vuex: true,
         api: true,
         router: true,
-        pug: false,
       },
       msg: ''
     }

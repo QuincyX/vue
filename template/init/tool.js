@@ -9,8 +9,6 @@ let basePath = './src/pages'
 let originFile = './src/components/default.vue'
 // 模板识别字符（被替换的字段）
 let replaceName = /#pageName/
-// 自定义的目录结构
-let pageTable = require('./pages')
 //放置router文件的目录位置及文件名
 let routerFile = './src/router/index.js'
 

@@ -29,6 +29,7 @@ function createStoreModule(fileName) {
 fs.writeFileSync('./src/store/modules/' + fileName + '.js', fs.readFileSync('./src/store/modules/module.js', 'utf-8'))
 }
 
+let vueFileList = []
 async function findFile(p) {
 let files = await fs.readdirSync(p)
 for (let i = 0; i < files.length; i++) {
@@ -55,13 +56,13 @@ initPages: para => {
   }
   para.forEach(o => {
     if (o.module === '/') {
-      o.vueFile.forEach(v => {
+      o.pages.forEach(v => {
         createVueFileFromOrigin('/' + v.name)
         console.log('create ' + v.name + ' success')
       })
     } else {
       fs.mkdirSync(path.join(__dirname, '..', basePath, ('/' + o.module)))
-      o.vueFile.forEach(v => {
+      o.pages.forEach(v => {
         createVueFileFromOrigin('/' + o.module + '/' + v.name)
         console.log('create ' + v.name + ' success')
       })

@@ -69,8 +69,8 @@ export default {
   },
   methods: {
     init() {
-      this.$API.init(this.data.pages).then(res => {
-        this.msg = res || 'success!'
+      this.$API.init(this.data).then(res => {
+        this.msg = res
       })
     }
   }

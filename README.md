@@ -27,4 +27,15 @@ npm run dev
 项目运行成功后，即可在浏览器页面中一键初始化
 
 
+## to-do 
+- [x] init pages
+- [x] init router
+- [x] init api moudle
+- [x] init vuex moudle
+- [x] add globle less vars & mixins
+- [x] add web UI
+- [x] delete cli script
+- [ ] mock
+- [ ] auto dev router list
+
 wx：likequincy

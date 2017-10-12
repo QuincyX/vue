@@ -13,6 +13,9 @@ cnpm i
 # 开发环境 localhost:8080
 npm run dev
 
+# 开发环境 dashboard模式
+npm run dashboard
+
 # 打包
 npm run build
 

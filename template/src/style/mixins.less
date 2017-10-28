@@ -1,7 +1,28 @@
 // 全局mixin定义
-.border(@color){
+.border(@color:#ccc){
   border:1px solid @color;
 }
 .inline(){
   display: inline-block;
+}
+.radius(@size:5px){
+  border-radius: @size;
+}
+.hide(){
+  display: none;
+}
+.show(){
+  display: block;
+}
+.wrap(){
+  position: absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+}
+.rounded(@size:60px){
+  width:@size;
+  height:@size;
+  border-radius: 50%;
 }

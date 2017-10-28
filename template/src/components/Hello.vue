@@ -117,9 +117,9 @@ input[type="checkbox"] {
 .item {
   line-height: 40px;
   .module {
-    .line(@dark);
+    .line(@black);
     input {
-      .border(@dark);
+      .border(@black);
     }
     margin-left: 35px;
   }
@@ -130,10 +130,10 @@ input[type="checkbox"] {
 }
 
 .subItem {
-  .line(@warn);
+  .line(@danger);
   margin-left: 60px;
   input {
-    .border(@warn);
+    .border(@danger);
   }
 }
 
@@ -161,7 +161,7 @@ input[type="checkbox"] {
     width: 250px;
     padding: 1em;
     .row{
-      color:@sub;
+      color:@success;
       font-size: 12px;
       margin-top:2em;
       text-align: center;

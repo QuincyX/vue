@@ -6,8 +6,8 @@ button{
   .border(@border);
   cursor: pointer;
   &:hover{
-    .border(@main);
-    background:@main;
+    .border(@primary);
+    background:@primary;
     color:white;
   }
 }
@@ -15,20 +15,26 @@ button.small{
   padding:.2em .5em;
 }
 button.danger{
-  color:@danger;
-  .border(@danger);
+  color:@error;
+  .border(@error);
   &:hover{
-    .border(@danger);
-    background:@danger;
+    .border(@error);
+    background:@error;
     color:white;
   }
 }
 button.success{
-  color:@sub;
-  .border(@sub);
+  color:@success;
+  .border(@success);
   &:hover{
-    .border(@sub);
-    background:@sub;
+    .border(@success);
+    background:@success;
     color:white;
   }
+}
+
+.container{
+  max-width: 1200px;
+  margin:0 auto;
+  padding:1em 0;
 }

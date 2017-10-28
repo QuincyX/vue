@@ -53,7 +53,18 @@ export default {
     return {
       data: {
         pages: [
-          { module: '/', pages: [{ name: 'main' },{ name: 'navFrame' },{ name: 'login' }] }
+          {
+            module: "/",
+            pages: [{ name: "main" }, { name: "navFrame" }, { name: "login" }]
+          },
+          {
+            module: "/post",
+            pages: [{ name: "list" }, { name: "edit" }]
+          },
+          {
+            module: "/user",
+            pages: [{ name: "index" }, { name: "profile" }]
+          }
         ],
         vuex: true,
         api: true,

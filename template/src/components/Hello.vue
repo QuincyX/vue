@@ -130,10 +130,10 @@ input[type="checkbox"] {
 }
 
 .subItem {
-  .line(@danger);
+  .line(@error);
   margin-left: 60px;
   input {
-    .border(@danger);
+    .border(@error);
   }
 }
 

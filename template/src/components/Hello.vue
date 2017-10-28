@@ -58,11 +58,11 @@ export default {
             pages: [{ name: "main" }, { name: "navFrame" }, { name: "login" }]
           },
           {
-            module: "/post",
+            module: "post",
             pages: [{ name: "list" }, { name: "edit" }]
           },
           {
-            module: "/user",
+            module: "user",
             pages: [{ name: "index" }, { name: "profile" }]
           }
         ],

@@ -59,7 +59,7 @@ export default {
           },
           {
             module: "post",
-            pages: [{ name: "list" }, { name: "edit" }]
+            pages: [{ name: "new" },{ name: "list" }, { name: "edit" }]
           },
           {
             module: "user",

@@ -113,11 +113,11 @@ button.small {
   padding: 0.2em 0.5em;
 }
 button.danger {
-  color: @danger;
-  .border(@danger);
+  color: @error;
+  .border(@error);
   &:hover {
-    .border(@danger);
-    background: @danger;
+    .border(@error);
+    background: @error;
     color: white;
   }
 }

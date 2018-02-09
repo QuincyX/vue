@@ -50,6 +50,7 @@ async function findFile(p) {
 }
 
 module.exports = {
+
   initPages: para => {
     if (!fs.existsSync(path.join(__dirname, '..', basePath))) {
       fs.mkdirSync(path.join(__dirname, '..', basePath))
@@ -69,6 +70,7 @@ module.exports = {
       }
     })
   },
+
   initRouter: para => {
     if (fs.existsSync(routerFile)) {
       let bakFile = routerFile.replace(/index\.js/, 'index_bak.js')
@@ -83,9 +85,9 @@ module.exports = {
       vueFileList.forEach((o, i) => {
         // data += "import " + o.name + " from '" + o.path + "'\r\n"
         if (o.name === 'main') {
-          routerList.push((i === 0 ? '' : ' ') + "{\r\n\t\tpath: '/',\r\n\t\tname: '" + o.name + "',\r\n\t\tcomponent: " + o.name + "\r\n\t}")
+          routerList.push((i === 0 ? "" : " ") + "{\r\n\t\tpath: '/',\r\n\t\tcomponent: require('" + o.path + "').defaul\r\n\t}");
         } else {
-          routerList.push((i === 0 ? "" : " ") + "{\r\n\t\tpath: '" + o.link + "',\r\n\t\tname: '" + o.name + "',\r\n\t\tcomponent: require('" + o.path + "').default\r\n\t}");
+          routerList.push((i === 0 ? "" : " ") + "{\r\n\t\tpath: '" + o.link + "',\r\n\t\tcomponent: require('" + o.path + "').default\r\n\t}");
         }
       })
       data += "\nVue.use(Router)\r\n\n"
@@ -99,6 +101,7 @@ module.exports = {
       })
     })
   },
+
   initApi: para => {
     let apiFileAppend = '// 引入API模块\r\n'
     let apiFileAppend2 = 'Object.assign(initAPI'
@@ -111,6 +114,7 @@ module.exports = {
     })
     fs.writeFileSync('./src/api/index.js', fs.readFileSync('./src/api/index.js', 'utf-8').replace(/\/\/ 引入API模块/, apiFileAppend).replace(/Object\.assign\(initAPI/, apiFileAppend2))
   },
+
   initVuex: para => {
     let storeFileAppend = '// 引入vuex模块\r\n'
     let storeFileAppend2 = 'modules: {\r\n'
@@ -122,5 +126,14 @@ module.exports = {
       }
     })
     fs.writeFileSync('./src/store/index.js', fs.readFileSync('./src/store/index.js', 'utf-8').replace(/\/\/ 引入vuex模块/, storeFileAppend).replace(/modules: \{/, storeFileAppend2))
-  }
+  },
+
+  initEle: para => {
+
+  },
+
+  initPug: para => {
+
+  },
+
 }

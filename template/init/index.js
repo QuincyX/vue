@@ -11,7 +11,7 @@ router.post('/', (req, res) => {
   thisModules.shift()
   if (thisModules.length) {
     if (req.body.api) {
-      initTool.initApi(thisModules)
+      // initTool.initApi(thisModules)
     }
     if (req.body.vuex) {
       initTool.initVuex(thisModules)
@@ -21,10 +21,10 @@ router.post('/', (req, res) => {
     initTool.initRouter()
   }
   if (req.body.isEle) {
-    // initTool.initRouter()
+    // initTool.initEle()
   }
   if (req.body.isPug) {
-    // initTool.initRouter()
+    // initTool.initPug()
   }
   res.send('init pages success')
 })

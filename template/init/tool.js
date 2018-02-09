@@ -81,11 +81,11 @@ module.exports = {
       data += "//import pages below\r\n"
       let routerList = []
       vueFileList.forEach((o, i) => {
-        data += "import " + o.name + " from '" + o.path + "'\r\n"
+        // data += "import " + o.name + " from '" + o.path + "'\r\n"
         if (o.name === 'main') {
           routerList.push((i === 0 ? '' : ' ') + "{\r\n\t\tpath: '/',\r\n\t\tname: '" + o.name + "',\r\n\t\tcomponent: " + o.name + "\r\n\t}")
         } else {
-          routerList.push((i === 0 ? '' : ' ') + "{\r\n\t\tpath: '" + o.link + "',\r\n\t\tname: '" + o.name + "',\r\n\t\tcomponent: " + o.name + "\r\n\t}")
+          routerList.push((i === 0 ? "" : " ") + "{\r\n\t\tpath: '" + o.link + "',\r\n\t\tname: '" + o.name + "',\r\n\t\tcomponent: require('" + o.path + "').default\r\n\t}");
         }
       })
       data += "\nVue.use(Router)\r\n\n"

@@ -13,6 +13,12 @@
         <div class="item">
           <input type="checkbox" v-model="data.router">生成 Vue-router 路由表
         </div>
+        <div class="item">
+          <input type="checkbox" v-model="data.isEle">使用 element-ui
+        </div>
+        <div class="item">
+          <input type="checkbox" v-model="data.isPug">使用 pug
+        </div>
         <div class="row">
           {{msg}}
         </div>
@@ -48,39 +54,78 @@
 
 <script>
 export default {
-  name: 'hello',
+  name: "hello",
   data() {
     return {
       data: {
         pages: [
-          { module: '/', pages: [{ name: 'main' },{ name: 'navFrame' },{ name: 'login' }] }
+          {
+            module: "/",
+            pages: [{ name: "main" }, { name: "navFrame" }, { name: "login" }]
+          }
         ],
         vuex: true,
         api: true,
         router: true,
+        isEle: true,
+        isPug: true
       },
-      msg: ''
-    }
+      msg: ""
+    };
   },
   filters: {
     parseData(val) {
-      return JSON.stringify(val)
+      return JSON.stringify(val);
     }
   },
   methods: {
     init() {
       this.$API.init(this.data).then(res => {
-        this.msg = res
-      })
+        this.msg = res;
+      });
     }
   }
-}
+};
 </script>
 
 <style lang="less" scoped>
+button {
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  background: white;
+  .border(@border);
+  cursor: pointer;
+  &:hover {
+    .border(@main);
+    background: @main;
+    color: white;
+  }
+}
+button.small {
+  padding: 0.2em 0.5em;
+}
+button.danger {
+  color: @danger;
+  .border(@danger);
+  &:hover {
+    .border(@danger);
+    background: @danger;
+    color: white;
+  }
+}
+button.success {
+  color: @sub;
+  .border(@sub);
+  &:hover {
+    .border(@sub);
+    background: @sub;
+    color: white;
+  }
+}
+
 input {
   width: 90px;
-  padding: .2em .5em;
+  padding: 0.2em 0.5em;
 }
 
 input[type="checkbox"] {
@@ -110,7 +155,7 @@ input[type="checkbox"] {
     position: absolute;
     background: @color;
     left: -40px;
-    top:-19px;
+    top: -19px;
   }
 }
 
@@ -160,10 +205,10 @@ input[type="checkbox"] {
     .child;
     width: 250px;
     padding: 1em;
-    .row{
-      color:@sub;
+    .row {
+      color: @sub;
       font-size: 12px;
-      margin-top:2em;
+      margin-top: 2em;
       text-align: center;
     }
   }

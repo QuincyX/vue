@@ -1,34 +1,6 @@
 // 全局样式
-button{
-  padding:.5em 1em;
-  border-radius: 5px;
-  background: white;
-  .border(@border);
-  cursor: pointer;
-  &:hover{
-    .border(@main);
-    background:@main;
-    color:white;
-  }
-}
-button.small{
-  padding:.2em .5em;
-}
-button.danger{
-  color:@danger;
-  .border(@danger);
-  &:hover{
-    .border(@danger);
-    background:@danger;
-    color:white;
-  }
-}
-button.success{
-  color:@sub;
-  .border(@sub);
-  &:hover{
-    .border(@sub);
-    background:@sub;
-    color:white;
-  }
+
+.container {
+  max-width: @wid;
+  .mCenter;
 }

@@ -20,6 +20,12 @@ router.post('/', (req, res) => {
   if (req.body.router) {
     initTool.initRouter()
   }
+  if (req.body.isEle) {
+    // initTool.initRouter()
+  }
+  if (req.body.isPug) {
+    // initTool.initRouter()
+  }
   res.send('init pages success')
 })
 

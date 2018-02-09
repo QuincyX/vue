@@ -104,8 +104,8 @@ button {
   .border(@border);
   cursor: pointer;
   &:hover {
-    .border(@main);
-    background: @main;
+    .border(@primary);
+    background: @primary;
     color: white;
   }
 }
@@ -122,11 +122,11 @@ button.danger {
   }
 }
 button.success {
-  color: @sub;
-  .border(@sub);
+  color: @success;
+  .border(@success);
   &:hover {
-    .border(@sub);
-    background: @sub;
+    .border(@success);
+    background: @success;
     color: white;
   }
 }

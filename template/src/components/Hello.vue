@@ -62,6 +62,14 @@ export default {
           {
             module: "/",
             pages: [{ name: "main" }, { name: "navFrame" }, { name: "login" }]
+          },
+          {
+            module: "post",
+            pages: [{ name: "new" },{ name: "list" }, { name: "edit" }]
+          },
+          {
+            module: "user",
+            pages: [{ name: "index" }, { name: "profile" }]
           }
         ],
         vuex: true,
@@ -162,9 +170,9 @@ input[type="checkbox"] {
 .item {
   line-height: 40px;
   .module {
-    .line(@dark);
+    .line(@black);
     input {
-      .border(@dark);
+      .border(@black);
     }
     margin-left: 35px;
   }
@@ -175,10 +183,10 @@ input[type="checkbox"] {
 }
 
 .subItem {
-  .line(@warn);
+  .line(@error);
   margin-left: 60px;
   input {
-    .border(@warn);
+    .border(@error);
   }
 }
 
@@ -205,8 +213,8 @@ input[type="checkbox"] {
     .child;
     width: 250px;
     padding: 1em;
-    .row {
-      color: @sub;
+    .row{
+      color:@success;
       font-size: 12px;
       margin-top: 2em;
       text-align: center;
